@@ -18,18 +18,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_032513) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "movies_id"
-    t.bigint "lists_id"
-    t.index ["lists_id"], name: "index_bookmarks_on_lists_id"
-    t.index ["movies_id"], name: "index_bookmarks_on_movies_id"
+    t.bigint "movie_id"
+    t.bigint "list_id"
+    t.index ["list_id"], name: "index_bookmarks_on_list_id"
+    t.index ["movie_id"], name: "index_bookmarks_on_movie_id"
   end
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
-    t.bigint "bookmark_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bookmark_id"], name: "index_lists_on_bookmark_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -37,14 +35,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_032513) do
     t.string "overview"
     t.string "poster_url"
     t.integer "rating"
-    t.bigint "bookmark_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bookmark_id"], name: "index_movies_on_bookmark_id"
   end
 
-  add_foreign_key "bookmarks", "lists", column: "lists_id"
-  add_foreign_key "bookmarks", "movies", column: "movies_id"
-  add_foreign_key "lists", "bookmarks"
-  add_foreign_key "movies", "bookmarks"
+  add_foreign_key "bookmarks", "lists"
+  add_foreign_key "bookmarks", "movies"
 end
