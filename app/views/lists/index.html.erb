@@ -1,0 +1,18 @@
+<div class="list_banner d-flex align-items-center justify-content-center position-relative">
+  <button class="new-list-button btn btn-warning position-absolute">
+  <%= link_to("new list", new_list_path)%>
+  </button>
+  <%= image_tag 'https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2018/05/Gradient-Round-Up-Featured-Image.jpg', style: 'height: 500px; width: 100%;'%>
+  <h1 class="position-absolute text-light">Welcome!</h1>
+</div>
+<div class= "container">
+  <div class= "d-flex grid gap-3 justify-content-center mt-5">
+    <% @lists.each do |list|%>
+      <%= link_to list_path(list) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <%= list.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

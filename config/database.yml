@@ -1,4 +1,16 @@
 # PostgreSQL. Versions 9.3 and up are supported.
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: rails-watch-list_development
+
+test:
+  <<: *default
+  database: rails-watch-list_test
 #
 # Install the pg driver:
 #   gem install pg
@@ -14,17 +26,19 @@
 # Configure Using Gemfile
 # gem "pg"
 #
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
-  <<: *default
-  database: rails_watch_list_development
+# OG CODE ------------------------------------------------
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   # For details on connection pooling, see Rails configuration guide
+#   # https://guides.rubyonrails.org/configuring.html#database-pooling
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+# development:
+#   <<: *default
+#   database: rails_watch_list_development
+# OG CODE ------------------------------------------------
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -79,8 +93,10 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
-  <<: *default
-  database: rails_watch_list_production
-  username: rails_watch_list
-  password: <%= ENV["RAILS_WATCH_LIST_DATABASE_PASSWORD"] %>
+# OG CODE ------------------------------------------------
+# production:
+#   <<: *default
+#   database: rails_watch_list_production
+#   username: rails_watch_list
+#   password: <%= ENV["RAILS_WATCH_LIST_DATABASE_PASSWORD"] %>
+# OG CODE ------------------------------------------------

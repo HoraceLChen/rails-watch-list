@@ -1,0 +1,11 @@
+<%= @list.name %>
+<% @bookmarks.each do |bookmark| %>
+<%= bookmark.comment %>
+<%= bookmark.movie.title %>
+<%= bookmark.movie.rating %>
+<img src = <%=bookmark.movie.poster_url%>>
+<% end %>
+
+ <button class="new-list-button btn btn-warning position-absolute">
+  <%= link_to("add a movie",  new_list_bookmark_path(@list))%>
+  </button>
