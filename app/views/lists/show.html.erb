@@ -1,9 +1,18 @@
 <%= @list.name %>
+
 <% @bookmarks.each do |bookmark| %>
-<%= bookmark.comment %>
-<%= bookmark.movie.title %>
-<%= bookmark.movie.rating %>
-<img src = <%=bookmark.movie.poster_url%>>
+<div class="card-trip" style="width: 10px">
+  <img src="<%=bookmark.movie.poster_url%>" />
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= bookmark.movie.title %></h2>
+      <p><%= bookmark.comment %></p>
+    </div>
+    <h2 class="card-trip-pricing">⭐<%= bookmark.movie.rating %></h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+</div>
+
 <% end %>
 
  <button class="new-list-button btn btn-warning position-absolute">
